@@ -1,0 +1,50 @@
+# =========================
+# 🌟 General Git Ignore 🌟
+# =========================
+
+# 🔹 Python (Backend)
+venv/
+__pycache__/
+*.pyc
+*.pyo
+
+# 🔹 Node.js (Frontend)
+node_modules/
+.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# 🔹 Testing Coverage
+coverage/
+
+# 🔹 Next.js (Frontend)
+.next/
+out/
+
+# 🔹 Production Builds
+build/
+
+# 🔹 Miscellaneous
+.DS_Store
+*.pem
+
+# 🔹 Debug Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# 🔹 Environment Files
+.env*
+!.env.example  # (Keep an example env file)
+
+# 🔹 Vercel
+.vercel
+
+# 🔹 TypeScript
+*.tsbuildinfo
+next-env.d.ts
