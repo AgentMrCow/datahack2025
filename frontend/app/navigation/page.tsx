@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect, useCallback, useRef } from "react"
+import { useState, useEffect, useCallback, useRef, Suspense } from "react"
 import Link from "next/link"
 import { useSearchParams } from "next/navigation"
 import { Button } from "@/components/ui/button"
@@ -22,14 +22,29 @@ const options = {
   zoomControl: true,
 }
 
-export default function SafeNavigation() {
-    const searchParams = useSearchParams();
-    const [destination, setDestination] = useState("");
+// **Wrap useSearchParams in a Suspense component**
+function DestinationInput({ setDestination }: { setDestination: (value: string) => void }) {
+  const searchParams = useSearchParams();
   
-    useEffect(() => {
-      setDestination(searchParams.get("destination") || "");
-    }, [searchParams]); // Only run when searchParams change
+  useEffect(() => {
+    setDestination(searchParams.get("destination") || "");
+  }, [searchParams]);
 
+  return null;
+}
+
+export default function SafeNavigation() {
+  const [destination, setDestination] = useState("");
+
+  return (
+    <Suspense fallback={<div>Loading search params...</div>}>
+      <DestinationInput setDestination={setDestination} />
+      <NavigationComponent destination={destination} setDestination={setDestination} />
+    </Suspense>
+  );
+}
+
+function NavigationComponent({ destination, setDestination }: { destination: string, setDestination: (value: string) => void }) {
   const [origin, setOrigin] = useState("")
   const [routeCalculated, setRouteCalculated] = useState(false)
   const [loading, setLoading] = useState(false)
