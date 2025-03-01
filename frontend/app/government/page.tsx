@@ -496,7 +496,7 @@ export default function Dashboard() {
                   </Badge>
                 </div>
                 <div className="absolute top-1/3 right-1/3">
-                  <Badge variant="warning" className="bg-amber-500 flex items-center gap-1 px-2">
+                  <Badge className="bg-amber-500 flex items-center gap-1 px-2">
                     <MapPin className="h-3 w-3" />
                     <span>Medium Risk</span>
                   </Badge>
@@ -558,7 +558,7 @@ export default function Dashboard() {
                       <td className="p-2">2,500</td>
                       <td className="p-2">3,000</td>
                       <td className="p-2">
-                        <Badge variant="success" className="bg-green-100 text-green-700">
+                        <Badge className="bg-green-100 text-green-700">
                           Adequate
                         </Badge>
                       </td>
@@ -582,7 +582,7 @@ export default function Dashboard() {
                       <td className="p-2">1,800</td>
                       <td className="p-2">1,500</td>
                       <td className="p-2">
-                        <Badge variant="warning" className="bg-amber-100 text-amber-700">
+                        <Badge className="bg-amber-100 text-amber-700">
                           Low
                         </Badge>
                       </td>
@@ -595,7 +595,7 @@ export default function Dashboard() {
                       <td className="p-2">2,100</td>
                       <td className="p-2">2,800</td>
                       <td className="p-2">
-                        <Badge variant="success" className="bg-green-100 text-green-700">
+                        <Badge  className="bg-green-100 text-green-700">
                           Adequate
                         </Badge>
                       </td>
@@ -608,7 +608,7 @@ export default function Dashboard() {
                       <td className="p-2">900</td>
                       <td className="p-2">1,200</td>
                       <td className="p-2">
-                        <Badge variant="warning" className="bg-amber-100 text-amber-700">
+                        <Badge className="bg-amber-100 text-amber-700">
                           Low
                         </Badge>
                       </td>
