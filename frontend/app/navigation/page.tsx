@@ -23,11 +23,14 @@ const options = {
 }
 
 export default function SafeNavigation() {
-  const searchParams = useSearchParams()
-  const destinationParam = searchParams?.get("destination")
+    const searchParams = useSearchParams();
+    const [destination, setDestination] = useState("");
+  
+    useEffect(() => {
+      setDestination(searchParams.get("destination") || "");
+    }, [searchParams]); // Only run when searchParams change
 
   const [origin, setOrigin] = useState("")
-  const [destination, setDestination] = useState(destinationParam || "")
   const [routeCalculated, setRouteCalculated] = useState(false)
   const [loading, setLoading] = useState(false)
   const [currentLocation, setCurrentLocation] = useState("Detecting your location...")
