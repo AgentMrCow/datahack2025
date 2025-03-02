@@ -138,20 +138,11 @@ export default function MedicalServices() {
             >
               Risk Calculator
             </Link>
-            <Link href="/medical-services" className="text-sm font-medium transition-colors hover:text-primary">
-              Medical Services
-            </Link>
             <Link
               href="/map"
               className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
             >
               Risk Map
-            </Link>
-            <Link
-              href="/navigation"
-              className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
-            >
-              Safe Navigation
             </Link>
           </nav>
         </div>

@@ -1,0 +1,119 @@
+,Direction,Station Code,Station ID,Chinese Name,English Name,Sequence,latitude,longitude,station_pair,Line Name
+5,UT,HOK,44.0,香港,Hong Kong,1.0,22.284377,114.158056,"('HOK', 'Hong Kong')",Airport Express
+6,UT,KOW,45.0,九龍,Kowloon,2.0,22.304306,114.161475,"('KOW', 'Kowloon')",Airport Express
+7,UT,TSY,46.0,青衣,Tsing Yi,3.0,22.3584978,114.107672,"('TSY', 'Tsing Yi')",Airport Express
+8,UT,AIR,47.0,機場,Airport,4.0,22.284377,114.158056,"('AIR', 'Airport')",Airport Express
+9,UT,AWE,56.0,博覽館,AsiaWorld-Expo,5.0,22.321343,113.943288,"('AWE', 'AsiaWorld-Expo')",Airport Express
+12,UT,DIS,55.0,迪士尼,Disneyland Resort,1.0,22.3153543,114.0451876,"('DIS', 'Disneyland Resort')",Disneyland Resort Line
+13,UT,SUN,54.0,欣澳,Sunny Bay,2.0,22.331731,114.0289607,"('SUN', 'Sunny Bay')",Disneyland Resort Line
+56,UT,ADM,2.0,金鐘,Admiralty,1.0,22.278363,114.164485,"('ADM', 'Admiralty')",East Rail Line
+57,UT,EXC,94.0,會展,Exhibition Centre,2.0,22.2817405,114.174836,"('EXC', 'Exhibition Centre')",East Rail Line
+58,UT,HUH,64.0,紅磡,Hung Hom,3.0,22.3027389,114.1821136,"('HUH', 'Hung Hom')",East Rail Line
+59,UT,MKK,65.0,旺角東,Mong Kok East,4.0,22.32207,114.17225,"('MKK', 'Mong Kok East')",East Rail Line
+60,UT,KOT,8.0,九龍塘,Kowloon Tong,5.0,22.336918,114.175852,"('KOT', 'Kowloon Tong')",East Rail Line
+61,UT,TAW,67.0,大圍,Tai Wai,6.0,22.373284,114.178152,"('TAW', 'Tai Wai')",East Rail Line
+62,UT,SHT,68.0,沙田,Sha Tin,7.0,22.383936,114.187994,"('SHT', 'Sha Tin')",East Rail Line
+63,UT,FOT,69.0,火炭,Fo Tan,8.0,22.3959,114.198917,"('FOT', 'Fo Tan')",East Rail Line
+64,UT,UNI,71.0,大學,University,9.0,22.413639,114.210284,"('UNI', 'University')",East Rail Line
+65,UT,TAP,72.0,大埔墟,Tai Po Market,10.0,22.4439256,114.1704519,"('TAP', 'Tai Po Market')",East Rail Line
+66,UT,TWO,73.0,太和,Tai Wo,11.0,22.450572,114.16094,"('TWO', 'Tai Wo')",East Rail Line
+67,UT,FAN,74.0,粉嶺,Fanling,12.0,22.4920033,114.1388264,"('FAN', 'Fanling')",East Rail Line
+68,UT,SHS,75.0,上水,Sheung Shui,13.0,22.501007,114.1282358,"('SHS', 'Sheung Shui')",East Rail Line
+69,UT,LOW,76.0,羅湖,Lo Wu,14.0,22.529588,114.113799,"('LOW', 'Lo Wu')",East Rail Line
+87,UT,KET,83.0,堅尼地城,Kennedy Town,1.0,22.2812467,114.1288825,"('KET', 'Kennedy Town')",Island Line
+88,UT,HKU,82.0,香港大學,HKU,2.0,22.284424,114.134295,"('HKU', 'HKU')",Island Line
+89,UT,SYP,81.0,西營盤,Sai Ying Pun,3.0,22.2864761,114.1417471,"('SYP', 'Sai Ying Pun')",Island Line
+90,UT,SHW,26.0,上環,Sheung Wan,4.0,22.2865601,114.1518714,"('SHW', 'Sheung Wan')",Island Line
+91,UT,CEN,1.0,中環,Central,5.0,22.28187,114.158647,"('CEN', 'Central')",Island Line
+92,UT,ADM,2.0,金鐘,Admiralty,6.0,22.278363,114.164485,"('ADM', 'Admiralty')",Island Line
+93,UT,WAC,27.0,灣仔,Wan Chai,7.0,22.277725,114.173198,"('WAC', 'Wan Chai')",Island Line
+94,UT,CAB,28.0,銅鑼灣,Causeway Bay,8.0,22.2803747,114.1850421,"('CAB', 'Causeway Bay')",Island Line
+95,UT,TIH,29.0,天后,Tin Hau,9.0,22.2824215,114.1917258,"('TIH', 'Tin Hau')",Island Line
+96,UT,FOH,30.0,炮台山,Fortress Hill,10.0,22.288272,114.193803,"('FOH', 'Fortress Hill')",Island Line
+97,UT,NOP,31.0,北角,North Point,11.0,22.2915937,114.2001799,"('NOP', 'North Point')",Island Line
+98,UT,QUB,32.0,鰂魚涌,Quarry Bay,12.0,22.2878748,114.2097467,"('QUB', 'Quarry Bay')",Island Line
+99,UT,TAK,33.0,太古,Tai Koo,13.0,22.2851,114.214515,"('TAK', 'Tai Koo')",Island Line
+100,UT,SWH,34.0,西灣河,Sai Wan Ho,14.0,22.282369,114.222449,"('SWH', 'Sai Wan Ho')",Island Line
+101,UT,SKW,35.0,筲箕灣,Shau Kei Wan,15.0,22.278713,114.229661,"('SKW', 'Shau Kei Wan')",Island Line
+102,UT,HFC,36.0,杏花邨,Heng Fa Chuen,16.0,22.27681,114.2399117,"('HFC', 'Heng Fa Chuen')",Island Line
+103,UT,CHW,37.0,柴灣,Chai Wan,17.0,22.2640684,114.2368672,"('CHW', 'Chai Wan')",Island Line
+121,UT,WHA,85.0,黃埔,Whampoa,1.0,22.304703,114.190194,"('WHA', 'Whampoa')",Kwun Tong Line
+122,UT,HOM,84.0,何文田,Ho Man Tin,2.0,22.3093594,114.1827294,"('HOM', 'Ho Man Tin')",Kwun Tong Line
+123,UT,YMT,5.0,油麻地,Yau Ma Tei,3.0,22.313734,114.169815,"('YMT', 'Yau Ma Tei')",Kwun Tong Line
+124,UT,MOK,6.0,旺角,Mong Kok,4.0,22.319394,114.170462,"('MOK', 'Mong Kok')",Kwun Tong Line
+125,UT,PRE,16.0,太子,Prince Edward,5.0,22.325736,114.167909,"('PRE', 'Prince Edward')",Kwun Tong Line
+126,UT,SKM,7.0,石硤尾,Shek Kip Mei,6.0,22.331675,114.168524,"('SKM', 'Shek Kip Mei')",Kwun Tong Line
+127,UT,KOT,8.0,九龍塘,Kowloon Tong,7.0,22.336918,114.175852,"('KOT', 'Kowloon Tong')",Kwun Tong Line
+128,UT,LOF,9.0,樂富,Lok Fu,8.0,22.338015,114.187606,"('LOF', 'Lok Fu')",Kwun Tong Line
+129,UT,WTS,10.0,黃大仙,Wong Tai Sin,9.0,22.341141,114.195332,"('WTS', 'Wong Tai Sin')",Kwun Tong Line
+130,UT,DIH,11.0,鑽石山,Diamond Hill,10.0,22.340017,114.201698,"('DIH', 'Diamond Hill')",Kwun Tong Line
+131,UT,CHH,12.0,彩虹,Choi Hung,11.0,22.334206,114.210056,"('CHH', 'Choi Hung')",Kwun Tong Line
+132,UT,KOB,13.0,九龍灣,Kowloon Bay,12.0,22.3231532,114.2140657,"('KOB', 'Kowloon Bay')",Kwun Tong Line
+133,UT,NTK,14.0,牛頭角,Ngau Tau Kok,13.0,22.315134,114.219628,"('NTK', 'Ngau Tau Kok')",Kwun Tong Line
+134,UT,KWT,15.0,觀塘,Kwun Tong,14.0,22.311657,114.226971,"('KWT', 'Kwun Tong')",Kwun Tong Line
+135,UT,LAT,38.0,藍田,Lam Tin,15.0,22.30671,114.233702,"('LAT', 'Lam Tin')",Kwun Tong Line
+136,UT,YAT,48.0,油塘,Yau Tong,16.0,22.298314,114.236641,"('YAT', 'Yau Tong')",Kwun Tong Line
+137,UT,TIK,49.0,調景嶺,Tiu Keng Leng,17.0,22.3044835,114.2528669,"('TIK', 'Tiu Keng Leng')",Kwun Tong Line
+138,UT,WKS,103.0,烏溪沙,Wu Kai Sha,1.0,22.4287258,114.2440697,"('WKS', 'Wu Kai Sha')",Tuen Ma Line
+139,UT,MOS,102.0,馬鞍山,Ma On Shan,2.0,22.4276756,114.2402751,"('MOS', 'Ma On Shan')",Tuen Ma Line
+140,UT,HEO,101.0,恆安,Heng On,3.0,22.41732,114.2257,"('HEO', 'Heng On')",Tuen Ma Line
+141,UT,TSH,100.0,大水坑,Tai Shui Hang,4.0,22.407132,114.222741,"('TSH', 'Tai Shui Hang')",Tuen Ma Line
+142,UT,SHM,99.0,石門,Shek Mun,5.0,22.387694,114.208349,"('SHM', 'Shek Mun')",Tuen Ma Line
+143,UT,CIO,98.0,第一城,City One,6.0,22.382832,114.203779,"('CIO', 'City One')",Tuen Ma Line
+144,UT,STW,97.0,沙田圍,Sha Tin Wai,7.0,22.377077,114.194698,"('STW', 'Sha Tin Wai')",Tuen Ma Line
+145,UT,CKT,96.0,車公廟,Che Kung Temple,8.0,22.37476,114.185953,"('CKT', 'Che Kung Temple')",Tuen Ma Line
+146,UT,TAW,67.0,大圍,Tai Wai,9.0,22.373284,114.178152,"('TAW', 'Tai Wai')",Tuen Ma Line
+147,UT,HIK,90.0,顯徑,Hin Keng,10.0,22.363834,114.17079,"('HIK', 'Hin Keng')",Tuen Ma Line
+148,UT,DIH,11.0,鑽石山,Diamond Hill,11.0,22.340017,114.201698,"('DIH', 'Diamond Hill')",Tuen Ma Line
+149,UT,KAT,91.0,啟德,Kai Tak,12.0,22.332406,114.19903,"('KAT', 'Kai Tak')",Tuen Ma Line
+150,UT,SUW,92.0,宋皇臺,Sung Wong Toi,13.0,22.32591,114.1913,"('SUW', 'Sung Wong Toi')",Tuen Ma Line
+151,UT,TKW,93.0,土瓜灣,To Kwa Wan,14.0,22.3181169,114.1878494,"('TKW', 'To Kwa Wan')",Tuen Ma Line
+152,UT,HOM,84.0,何文田,Ho Man Tin,15.0,22.3093594,114.1827294,"('HOM', 'Ho Man Tin')",Tuen Ma Line
+153,UT,HUH,64.0,紅磡,Hung Hom,16.0,22.3027389,114.1821136,"('HUH', 'Hung Hom')",Tuen Ma Line
+154,UT,ETS,80.0,尖東,East Tsim Sha Tsui,17.0,22.295189,114.174406,"('ETS', 'East Tsim Sha Tsui')",Tuen Ma Line
+155,UT,AUS,111.0,柯士甸,Austin,18.0,22.306023,114.165722,"('AUS', 'Austin')",Tuen Ma Line
+156,UT,NAC,53.0,南昌,Nam Cheong,19.0,22.3267772,114.1536799,"('NAC', 'Nam Cheong')",Tuen Ma Line
+157,UT,MEF,20.0,美孚,Mei Foo,20.0,22.3366557,114.140153,"('MEF', 'Mei Foo')",Tuen Ma Line
+158,UT,TWW,114.0,荃灣西,Tsuen Wan West,21.0,22.3680639,114.1108726,"('TWW', 'Tsuen Wan West')",Tuen Ma Line
+159,UT,KSR,115.0,錦上路,Kam Sheung Road,22.0,22.4341977,114.0633652,"('KSR', 'Kam Sheung Road')",Tuen Ma Line
+160,UT,YUL,116.0,元朗,Yuen Long,23.0,22.4460876,114.0347702,"('YUL', 'Yuen Long')",Tuen Ma Line
+161,UT,LOP,117.0,朗屏,Long Ping,24.0,22.44759,114.025635,"('LOP', 'Long Ping')",Tuen Ma Line
+162,UT,TIS,118.0,天水圍,Tin Shui Wai,25.0,22.4606419,114.0041996,"('TIS', 'Tin Shui Wai')",Tuen Ma Line
+163,UT,SIH,119.0,兆康,Siu Hong,26.0,22.4117535,113.9789961,"('SIH', 'Siu Hong')",Tuen Ma Line
+164,UT,TUM,120.0,屯門,Tuen Mun,27.0,22.394986,113.974383,"('TUM', 'Tuen Mun')",Tuen Ma Line
+200,UT,HOK,39.0,香港,Hong Kong,1.0,22.284377,114.158056,"('HOK', 'Hong Kong')",Tung Chung Line
+201,UT,KOW,40.0,九龍,Kowloon,2.0,22.304306,114.161475,"('KOW', 'Kowloon')",Tung Chung Line
+202,UT,OLY,41.0,奧運,Olympic,3.0,22.317771,114.16022,"('OLY', 'Olympic')",Tung Chung Line
+203,UT,NAC,53.0,南昌,Nam Cheong,4.0,22.3267772,114.1536799,"('NAC', 'Nam Cheong')",Tung Chung Line
+204,UT,LAK,21.0,茘景,Lai King,5.0,22.3483517,114.126192,"('LAK', 'Lai King')",Tung Chung Line
+205,UT,TSY,42.0,青衣,Tsing Yi,6.0,22.3584978,114.107672,"('TSY', 'Tsing Yi')",Tung Chung Line
+206,UT,SUN,54.0,欣澳,Sunny Bay,7.0,22.331731,114.0289607,"('SUN', 'Sunny Bay')",Tung Chung Line
+207,UT,TUC,43.0,東涌,Tung Chung,8.0,22.2873743,113.9425086,"('TUC', 'Tung Chung')",Tung Chung Line
+221,UT,NOP,31.0,北角,North Point,1.0,22.2915937,114.2001799,"('NOP', 'North Point')",Tseung Kwan O Line
+222,UT,QUB,32.0,鰂魚涌,Quarry Bay,2.0,22.2878748,114.2097467,"('QUB', 'Quarry Bay')",Tseung Kwan O Line
+223,UT,YAT,48.0,油塘,Yau Tong,3.0,22.298314,114.236641,"('YAT', 'Yau Tong')",Tseung Kwan O Line
+224,UT,TIK,49.0,調景嶺,Tiu Keng Leng,4.0,22.3044835,114.2528669,"('TIK', 'Tiu Keng Leng')",Tseung Kwan O Line
+225,UT,TKO,50.0,將軍澳,Tseung Kwan O,5.0,22.306961,114.26022,"('TKO', 'Tseung Kwan O')",Tseung Kwan O Line
+226,UT,HAH,51.0,坑口,Hang Hau,6.0,22.315605,114.264278,"('HAH', 'Hang Hau')",Tseung Kwan O Line
+227,UT,POA,52.0,寶琳,Po Lam,7.0,22.322478,114.257206,"('POA', 'Po Lam')",Tseung Kwan O Line
+244,UT,CEN,1.0,中環,Central,1.0,22.28187,114.158647,"('CEN', 'Central')",Tsuen Wan Line
+245,UT,ADM,2.0,金鐘,Admiralty,2.0,22.278363,114.164485,"('ADM', 'Admiralty')",Tsuen Wan Line
+246,UT,TST,3.0,尖沙咀,Tsim Sha Tsui,3.0,22.29849,114.1719331,"('TST', 'Tsim Sha Tsui')",Tsuen Wan Line
+247,UT,JOR,4.0,佐敦,Jordan,4.0,22.30479,114.17166,"('JOR', 'Jordan')",Tsuen Wan Line
+248,UT,YMT,5.0,油麻地,Yau Ma Tei,5.0,22.313734,114.169815,"('YMT', 'Yau Ma Tei')",Tsuen Wan Line
+249,UT,MOK,6.0,旺角,Mong Kok,6.0,22.319394,114.170462,"('MOK', 'Mong Kok')",Tsuen Wan Line
+250,UT,PRE,16.0,太子,Prince Edward,7.0,22.325736,114.167909,"('PRE', 'Prince Edward')",Tsuen Wan Line
+251,UT,SSP,17.0,深水埗,Sham Shui Po,8.0,22.3285899,114.1602846,"('SSP', 'Sham Shui Po')",Tsuen Wan Line
+252,UT,CSW,18.0,長沙灣,Cheung Sha Wan,9.0,22.335251,114.158064,"('CSW', 'Cheung Sha Wan')",Tsuen Wan Line
+253,UT,LCK,19.0,茘枝角,Lai Chi Kok,10.0,22.33726,114.14803,"('LCK', 'Lai Chi Kok')",Tsuen Wan Line
+254,UT,MEF,20.0,美孚,Mei Foo,11.0,22.3366557,114.140153,"('MEF', 'Mei Foo')",Tsuen Wan Line
+255,UT,LAK,21.0,茘景,Lai King,12.0,22.3483517,114.126192,"('LAK', 'Lai King')",Tsuen Wan Line
+256,UT,KWF,22.0,葵芳,Kwai Fong,13.0,22.3578109,114.1298151,"('KWF', 'Kwai Fong')",Tsuen Wan Line
+257,UT,KWH,23.0,葵興,Kwai Hing,14.0,22.363471,114.131255,"('KWH', 'Kwai Hing')",Tsuen Wan Line
+258,UT,TWH,24.0,大窩口,Tai Wo Hau,15.0,22.370609,114.124474,"('TWH', 'Tai Wo Hau')",Tsuen Wan Line
+259,UT,TSW,25.0,荃灣,Tsuen Wan,16.0,22.37283,114.1189,"('TSW', 'Tsuen Wan')",Tsuen Wan Line
+260,UT,ADM,2.0,金鐘,Admiralty,1.0,22.278363,114.164485,"('ADM', 'Admiralty')",South Island Line
+261,UT,OCP,86.0,海洋公園,Ocean Park,2.0,22.2488032,114.1746826,"('OCP', 'Ocean Park')",South Island Line
+262,UT,WCH,87.0,黃竹坑,Wong Chuk Hang,3.0,22.248224,114.168089,"('WCH', 'Wong Chuk Hang')",South Island Line
+263,UT,LET,88.0,利東,Lei Tung,4.0,22.2434232,114.1554591,"('LET', 'Lei Tung')",South Island Line
+264,UT,SOH,89.0,海怡半島,South Horizons,5.0,22.2428603,114.1487444,"('SOH', 'South Horizons')",South Island Line

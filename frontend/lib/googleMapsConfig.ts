@@ -3,7 +3,7 @@ import type { LoadScriptProps } from "@react-google-maps/api"
 export const googleMapsConfig: LoadScriptProps = {
   id: "google-map-script",
   googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || "",
-  libraries: ["places", "maps"],
+  libraries: ["places", "maps","visualization"],
 }
 
 export const mapCenter = {
