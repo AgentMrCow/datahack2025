@@ -26,6 +26,9 @@ export default function Home() {
             >
               Risk Map
             </Link>
+            <Link href="/government" className="text-sm font-medium hover:text-primary">
+              Government
+            </Link>
           </nav>
         </div>
       </header>

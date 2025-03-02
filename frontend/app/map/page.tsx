@@ -320,6 +320,9 @@ export default function RiskMap() {
                         <Link href="/map" className="text-sm font-medium hover:text-primary">
                             Risk Map
                         </Link>
+                        <Link href="/government" className="text-sm font-medium hover:text-primary">
+                            Government
+                        </Link>
                         {/* The navigation page is no longer used */}
                     </nav>
                 </div>
