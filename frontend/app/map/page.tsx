@@ -14,6 +14,7 @@ import { Badge } from "@/components/ui/badge";
 import { Slider } from "@/components/ui/slider";
 import { GoogleMap, useJsApiLoader, Marker, InfoWindow, HeatmapLayer, DirectionsRenderer } from "@react-google-maps/api";
 import { googleMapsConfig, mapCenter } from "@/lib/googleMapsConfig";
+import PlanRoutePage from "@/app/map/plan";
 
 // Constants for the MTR Risk Map
 const DISTANCE_THRESHOLD_KM = 1.0;
@@ -718,54 +719,7 @@ export default function RiskMap() {
                                     )}
                                 </CardContent>
                             </Card>
-
-                            {/* -------------------------------
-                  Safe Navigation Cards (moved from navigation/page.tsx)
-              ------------------------------- */}
-                            <Card>
-                                <CardHeader>
-                                    <CardTitle>Plan Your Route</CardTitle>
-                                    <CardDescription>We'll find the safest path to your destination in Hong Kong</CardDescription>
-                                </CardHeader>
-                                <CardContent className="space-y-4">
-                                    <div className="space-y-2">
-                                        <label className="text-sm font-medium">Starting Point</label>
-                                        <div className="flex items-center gap-2">
-                                            <Input
-                                                placeholder="Enter starting location"
-                                                value={origin}
-                                                onChange={(e) => setOrigin(e.target.value)}
-                                                ref={originRef}
-                                            />
-                                            <Button
-                                                variant="outline"
-                                                size="icon"
-                                                onClick={() => setOrigin(currentLocation)}
-                                                title="Use current location"
-                                            >
-                                                <LocateFixed className="h-4 w-4" />
-                                            </Button>
-                                        </div>
-                                        <p className="text-xs text-muted-foreground">Current location: {currentLocation}</p>
-                                    </div>
-
-                                    <div className="space-y-2">
-                                        <label className="text-sm font-medium">Destination</label>
-                                        <Input
-                                            placeholder="Enter destination"
-                                            value={destination}
-                                            onChange={(e) => setDestination(e.target.value)}
-                                            ref={destinationRef}
-                                        />
-                                    </div>
-
-                                    <Button className="w-full" onClick={calculateRoute} disabled={!origin || !destination || loading}>
-                                        {loading ? "Calculating..." : "Find Safe Route"}
-                                    </Button>
-                                </CardContent>
-                            </Card>
-
-                            {routeCalculated && (
+<PlanRoutePage />          {routeCalculated && (
                                 <Card>
                                     <CardHeader>
                                         <CardTitle>Route Summary</CardTitle>
