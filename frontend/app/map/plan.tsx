@@ -20,14 +20,16 @@ import {
   CommandList,
 } from "@/components/ui/command";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+// If you're using shadcn/ui for inputs, you might also need imports like:
+// import { Input } from "@/components/ui/input";
+// import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+// import { Switch } from "@/components/ui/switch";
 
-/* ===========================================================================
-   RISK ASSESSMENT LOGIC (Converted from Python)
-   ---------------------------------------------------------------------------
-   1. Define the Route Graph and Inherent Risk for Each Location
-   ========================================================================= */
+// ---------------------------------------------------------------------------
+// 1. Define the Route Graph and Inherent Risk
+// ---------------------------------------------------------------------------
 const routeGraph: { [key: string]: string[] } = {
-  "CUHK": ["New Town Plaza", "Admiralty Station"],
+  CUHK: ["New Town Plaza", "Admiralty Station"],
   "New Town Plaza": ["CUHK", "Exhibition Centre", "Admiralty Station"],
   "Hong Kong Museum of Art": ["Exhibition Centre", "Central"],
   "Exhibition Centre": [
@@ -38,7 +40,7 @@ const routeGraph: { [key: string]: string[] } = {
   ],
   "Admiralty Station": ["CUHK", "New Town Plaza", "Exhibition Centre", "Central", "HKU"],
   "Victoria Harbor": ["Central", "International Airport"],
-  "Central": [
+  Central: [
     "Admiralty Station",
     "Exhibition Centre",
     "Hong Kong Museum of Art",
@@ -46,39 +48,42 @@ const routeGraph: { [key: string]: string[] } = {
     "International Airport",
     "Victoria Harbor",
   ],
-  "HKU": ["Admiralty Station", "Central"],
+  HKU: ["Admiralty Station", "Central"],
   "International Airport": ["Central", "Victoria Harbor"],
 };
 
 const locationRisk: { [key: string]: number } = {
-  "CUHK": 0.3,
+  CUHK: 0.3,
   "New Town Plaza": 0.7,
   "Hong Kong Museum of Art": 0.5,
   "Exhibition Centre": 0.6,
-  "Admiralty Station": 0.8,
+  "Admiralty Station": 1.0,
   "Victoria Harbor": 0.4,
-  "Central": 0.8,
-  "HKU": 0.3,
+  Central: 0.8,
+  HKU: 0.3,
   "Ocean Park": 0.7,
   "International Airport": 0.9,
 };
 
-/* ===========================================================================
-   2. Utility: Find the Shortest Path on the Graph (BFS)
-   ========================================================================= */
+// ---------------------------------------------------------------------------
+// 2. BFS to find the shortest path (same as your Python logic)
+// ---------------------------------------------------------------------------
 function getShortestPath(
   graph: { [key: string]: string[] },
   start: string,
   destination: string
 ): string[] {
   if (!(start in graph) || !(destination in graph)) return [];
-  const visited = new Set<string>();
-  visited.add(start);
+
+  const visited = new Set([start]);
   const queue: string[][] = [[start]];
-  while (queue.length) {
+
+  while (queue.length > 0) {
     const path = queue.shift()!;
     const current = path[path.length - 1];
-    if (current === destination) return path;
+    if (current === destination) {
+      return path;
+    }
     for (const neighbor of graph[current] || []) {
       if (!visited.has(neighbor)) {
         visited.add(neighbor);
@@ -89,51 +94,62 @@ function getShortestPath(
   return [];
 }
 
-/* ===========================================================================
-   3. Calculate Route Risk by Summing the Risk of Intermediate Nodes
-   ========================================================================= */
+// ---------------------------------------------------------------------------
+// 3. Calculate route risk
+// ---------------------------------------------------------------------------
 function calculateRouteRisk(
   start: string,
   destination: string,
-  transportationMode: string = "public"
+  transportationMode: string
 ): { risk: number; path: string[] } {
   const path = getShortestPath(routeGraph, start, destination);
-  let baseRisk: number;
-  if (!path || path.length < 3) {
-    // No intermediate nodes – assign a small baseline risk.
+
+  let baseRisk = 0;
+  if (path.length < 3) {
+    // No (or 1) intermediate stops → baseline 0.2
     baseRisk = 0.2;
   } else {
+    // Sum only intermediate nodes
     const intermediateNodes = path.slice(1, -1);
-    baseRisk = intermediateNodes.reduce(
-      (sum, node) => sum + (locationRisk[node] || 0),
-      0
-    );
+    baseRisk = intermediateNodes.reduce((sum, node) => {
+      return sum + (locationRisk[node] || 0);
+    }, 0);
+    // Cap at 1.0
     baseRisk = Math.min(baseRisk, 1.0);
   }
-  const mode = transportationMode.toLowerCase();
+
   let multiplier = 1.0;
+  const mode = transportationMode.toLowerCase();
   if (mode === "public") multiplier = 1.2;
   else if (mode === "private") multiplier = 0.8;
+
   let routeRiskValue = baseRisk * multiplier;
   routeRiskValue = Math.min(Math.max(routeRiskValue, 0), 1.0);
+
   return { risk: routeRiskValue, path };
 }
 
-/* ===========================================================================
-   4. Compute the User's Personal Risk Factor
-   ========================================================================= */
-function computeUserRisk(userInfo: any): number {
+// ---------------------------------------------------------------------------
+// 4. User risk
+// ---------------------------------------------------------------------------
+function computeUserRisk(userInfo: {
+  age: number;
+  vaccinated: boolean;
+  has_preexisting: boolean;
+  safe_code: string;
+  transportation_mode: string;
+}): number {
   let risk = 0.2;
-  if (userInfo.vaccinated === false) risk += 0.3;
+  if (!userInfo.vaccinated) risk += 0.3;
   if (userInfo.has_preexisting) risk += 0.2;
-  if ((userInfo.age || 30) >= 60) risk += 0.2;
-  if ((userInfo.safe_code || "green").toLowerCase() === "yellow") risk += 0.2;
+  if (userInfo.age >= 60) risk += 0.2;
+  if (userInfo.safe_code.toLowerCase() === "yellow") risk += 0.2;
   return risk;
 }
 
-/* ===========================================================================
-   5. Sigmoid Function and Risk Estimator
-   ========================================================================= */
+// ---------------------------------------------------------------------------
+// 5. Sigmoid + logistic regression
+// ---------------------------------------------------------------------------
 function sigmoid(z: number): number {
   return 1 / (1 + Math.exp(-z));
 }
@@ -141,32 +157,46 @@ function sigmoid(z: number): number {
 function riskAssessment(
   start: string,
   destination: string,
-  userInfo: any,
+  userInfo: {
+    age: number;
+    vaccinated: boolean;
+    has_preexisting: boolean;
+    safe_code: string;
+    transportation_mode: string;
+  },
   weights?: number[],
   bias?: number
 ): { probability: number; riskLevel: string; path: string[] } {
-  // Immediate override: if safe code is red, return high risk.
-  if ((userInfo.safe_code || "green").toLowerCase() === "red") {
+  // If safe_code = "red", override
+  if (userInfo.safe_code.toLowerCase() === "red") {
     return { probability: 0.99, riskLevel: "red", path: [] };
   }
-  const transportationMode = userInfo.transportation_mode || "public";
-  const { risk: routeRisk, path } = calculateRouteRisk(start, destination, transportationMode);
+
+  const { risk: routeRisk, path } = calculateRouteRisk(
+    start,
+    destination,
+    userInfo.transportation_mode
+  );
   const userRisk = computeUserRisk(userInfo);
-  const features = [routeRisk, userRisk];
-  const defaultWeights = weights || [2.5, 2.0];
-  const defaultBias = bias || -3.0;
-  const z = defaultWeights[0] * features[0] + defaultWeights[1] * features[1] + defaultBias;
+
+  // Default weights from your Python code
+  const w = weights ?? [2.5, 2.0];
+  const b = bias ?? -3.0;
+
+  const z = w[0] * routeRisk + w[1] * userRisk + b;
   const p = sigmoid(z);
-  let riskLevel = "green";
-  if (p < 0.33) riskLevel = "green";
-  else if (p < 0.66) riskLevel = "yellow";
-  else riskLevel = "red";
-  return { probability: p, riskLevel, path };
+
+  let level = "green";
+  if (p < 0.33) level = "green";
+  else if (p < 0.66) level = "yellow";
+  else level = "red";
+
+  return { probability: p, riskLevel: level, path };
 }
 
-/* ===========================================================================
-   UI COMPONENTS: ComboBox (ShadCN style)
-   ========================================================================= */
+// ---------------------------------------------------------------------------
+// 6. Reusable ComboBox (ShadCN style) for picking origin/destination
+// ---------------------------------------------------------------------------
 type ComboBoxProps = {
   value: string;
   onValueChange: (val: string) => void;
@@ -176,6 +206,7 @@ type ComboBoxProps = {
 
 function ComboBox({ value, onValueChange, placeholder, options }: ComboBoxProps) {
   const [open, setOpen] = React.useState(false);
+
   return (
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
@@ -221,9 +252,11 @@ function ComboBox({ value, onValueChange, placeholder, options }: ComboBoxProps)
   );
 }
 
-/* ===========================================================================
-   MAIN PAGE COMPONENT
-   ========================================================================= */
+// ---------------------------------------------------------------------------
+// 7. Main "PlanRoutePage" with user attributes in the UI
+// ---------------------------------------------------------------------------
+
+// All known locations
 const allLocations = [
   { value: "CUHK", label: "CUHK" },
   { value: "New Town Plaza", label: "New Town Plaza" },
@@ -234,64 +267,84 @@ const allLocations = [
   { value: "Central", label: "Central" },
   { value: "HKU", label: "HKU" },
   { value: "International Airport", label: "International Airport" },
+  { value: "Ocean Park", label: "Ocean Park" },
 ];
 
-// When origin changes, valid destination options are filtered.
+// Don’t restrict to neighbors—let BFS do the real path check.
 function getDestinationOptions(origin: string) {
-  if (origin && routeGraph[origin]) {
-    return allLocations.filter((loc) => routeGraph[origin].includes(loc.value));
+  if (!origin) {
+    return allLocations;
   }
-  return allLocations;
+  // remove the origin itself from the list
+  return allLocations.filter((loc) => loc.value !== origin);
 }
 
-// Default user info (adjust as needed)
-const defaultUser = {
-  age: 30,
-  vaccinated: true,
-  has_preexisting: false,
-  safe_code: "green",
-  transportation_mode: "public",
-};
-
+// The main page
 export default function PlanRoutePage() {
-  // Separate loading states: one for locating, one for calculating.
+  // Origin/destination
   const [origin, setOrigin] = React.useState("");
   const [destination, setDestination] = React.useState("");
-  const [isLocating, setIsLocating] = React.useState(false);
-  const [isCalculating, setIsCalculating] = React.useState(false);
+
+  // Result from riskAssessment
   const [result, setResult] = React.useState<{
     probability: number;
     riskLevel: string;
     path: string[];
   } | null>(null);
 
-  // Reset destination and result when origin changes.
-  const handleOriginChange = (newOrigin: string) => {
-    setOrigin(newOrigin);
+  // “Locating…” simulation
+  const [isLocating, setIsLocating] = React.useState(false);
+  // “Calculating…” simulation
+  const [isCalculating, setIsCalculating] = React.useState(false);
+
+  // -------------------------------------------------------------------------
+  // NEW: Let user fill in the same data as in your Python examples
+  // -------------------------------------------------------------------------
+  const [userInfo, setUserInfo] = React.useState({
+    age: 30,
+    vaccinated: true,
+    has_preexisting: false,
+    safe_code: "green",
+    transportation_mode: "public",
+  });
+
+  function handleOriginChange(val: string) {
+    setOrigin(val);
     setDestination("");
     setResult(null);
-  };
+  }
 
-  // Filter destination options based on selected origin.
-  const destinationOptions = React.useMemo(() => getDestinationOptions(origin), [origin]);
-
-  // Simulate current location request: hard-code to "CUHK" (separate loading state).
-  const handleUseCurrentLocation = () => {
+  function handleUseCurrentLocation() {
     setIsLocating(true);
     setTimeout(() => {
       handleOriginChange("CUHK");
       setIsLocating(false);
     }, 1000);
-  };
+  }
 
-  // Compute risk assessment using the risk logic.
-  const handleFindRoute = () => {
+  // call riskAssessment with the user’s data
+  function handleFindRoute() {
     if (!origin || !destination) return;
     setIsCalculating(true);
-    const assessment = riskAssessment(origin, destination, defaultUser);
+
+    const assessment = riskAssessment(origin, destination, userInfo);
     setResult(assessment);
+
     setIsCalculating(false);
-  };
+  }
+
+  const destinationOptions = React.useMemo(() => {
+    return getDestinationOptions(origin);
+  }, [origin]);
+
+  // Handler to update userInfo (like handleUserChange('safe_code', 'yellow'))
+  function handleUserChange<K extends keyof typeof userInfo>(
+    field: K,
+    value: typeof userInfo[K]
+  ) {
+    setUserInfo((prev) => ({ ...prev, [field]: value }));
+    setResult(null); // reset result when user changes
+  }
 
   return (
     <div className="p-6 space-y-6">
@@ -299,11 +352,11 @@ export default function PlanRoutePage() {
         <CardHeader>
           <CardTitle>Plan Your Route</CardTitle>
           <CardDescription>
-            We'll find the safest path to your destination in Hong Kong.
+            Now you can set all user attributes to match your Python tests.
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
-          {/* Starting Point */}
+          {/* ORIGIN */}
           <div className="space-y-2">
             <label className="text-sm font-medium">Starting Point</label>
             <div className="flex items-center gap-2">
@@ -328,7 +381,7 @@ export default function PlanRoutePage() {
             </div>
           </div>
 
-          {/* Destination */}
+          {/* DESTINATION */}
           <div className="space-y-2">
             <label className="text-sm font-medium">Destination</label>
             <ComboBox
@@ -342,6 +395,64 @@ export default function PlanRoutePage() {
             />
           </div>
 
+          {/* --- USER ATTRIBUTES --- */}
+          <div className="bg-slate-50 p-4 rounded-md space-y-4">
+            <div className="flex items-center gap-2">
+              <label className="w-32 text-sm font-medium">Age</label>
+              <input
+                type="number"
+                className="border p-1 rounded w-20"
+                value={userInfo.age}
+                onChange={(e) => handleUserChange("age", Number(e.target.value))}
+              />
+            </div>
+
+            <div className="flex items-center gap-2">
+              <label className="w-32 text-sm font-medium">Vaccinated?</label>
+              <input
+                type="checkbox"
+                checked={userInfo.vaccinated}
+                onChange={(e) => handleUserChange("vaccinated", e.target.checked)}
+              />
+            </div>
+
+            <div className="flex items-center gap-2">
+              <label className="w-32 text-sm font-medium">Preexisting?</label>
+              <input
+                type="checkbox"
+                checked={userInfo.has_preexisting}
+                onChange={(e) => handleUserChange("has_preexisting", e.target.checked)}
+              />
+            </div>
+
+            <div className="flex items-center gap-2">
+              <label className="w-32 text-sm font-medium">Safe Code</label>
+              <select
+                className="border p-1 rounded"
+                value={userInfo.safe_code}
+                onChange={(e) => handleUserChange("safe_code", e.target.value)}
+              >
+                <option value="green">Green</option>
+                <option value="yellow">Yellow</option>
+                <option value="red">Red</option>
+              </select>
+            </div>
+
+            <div className="flex items-center gap-2">
+              <label className="w-32 text-sm font-medium">Transport Mode</label>
+              <select
+                className="border p-1 rounded"
+                value={userInfo.transportation_mode}
+                onChange={(e) => handleUserChange("transportation_mode", e.target.value)}
+              >
+                <option value="public">Public</option>
+                <option value="private">Private</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+          </div>
+
+          {/* --- SUBMIT --- */}
           <Button
             className="w-full"
             onClick={handleFindRoute}
@@ -350,16 +461,18 @@ export default function PlanRoutePage() {
             {isCalculating ? "Calculating..." : "Find Safe Route"}
           </Button>
 
+          {/* --- RESULT --- */}
           {result && (
             <div className="mt-4 text-sm">
               <p>
-                <strong>Risk Probability:</strong> {(result.probability * 100).toFixed(0)}%
+                <strong>Risk Probability:</strong> {(result.probability * 100).toFixed(2)}%
               </p>
               <p>
                 <strong>Risk Level:</strong> {result.riskLevel}
               </p>
               <p>
-                <strong>Route:</strong> {result.path.join(" → ")}
+                <strong>Route:</strong>{" "}
+                {result.path.length ? result.path.join(" → ") : "No path found"}
               </p>
             </div>
           )}

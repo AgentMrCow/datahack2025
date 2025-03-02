@@ -1,11 +1,12 @@
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Shield, MapPin, Navigation, Pill, Activity } from "lucide-react"
+import { Shield, Activity, MapPin } from "lucide-react"
 
 export default function Home() {
   return (
     <div className="flex min-h-screen flex-col">
+      {/* HEADER */}
       <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="container flex h-16 items-center">
           <Link href="/" className="flex items-center gap-2 font-semibold">
@@ -28,7 +29,10 @@ export default function Home() {
           </nav>
         </div>
       </header>
+
+      {/* MAIN CONTENT */}
       <main className="flex-1">
+        {/* HERO SECTION */}
         <section className="w-full py-12 md:py-24 lg:py-32 bg-muted">
           <div className="container px-4 md:px-6">
             <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px]">
@@ -38,8 +42,7 @@ export default function Home() {
                     Stay Safe During the Pandemic
                   </h1>
                   <p className="max-w-[600px] text-muted-foreground md:text-xl">
-                    Real-time risk assessment, medical services integration, and safe navigation to help you stay
-                    healthy.
+                    Real-time risk assessment and risk mapping to help you stay healthy.
                   </p>
                 </div>
                 <div className="flex flex-col gap-2 min-[400px]:flex-row">
@@ -57,32 +60,37 @@ export default function Home() {
                 <img
                   alt="Pandemic Safety App Dashboard"
                   className="aspect-video overflow-hidden rounded-xl object-cover object-center"
-                  src="/placeholder.svg?height=550&width=800"
+                  src="/pandemic.webp?height=550&width=800"
                 />
               </div>
             </div>
           </div>
         </section>
+
+        {/* KEY FEATURES */}
         <section className="w-full py-12 md:py-24 lg:py-32">
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
                 <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">Key Features</h2>
                 <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                  Our AI-powered platform provides comprehensive tools to keep you safe during the pandemic.
+                  Our AI-powered platform provides tools to keep you safe during the pandemic.
                 </p>
               </div>
             </div>
-            <div className="mx-auto grid max-w-5xl grid-cols-1 gap-6 py-12 md:grid-cols-2 lg:grid-cols-4">
+
+            {/* Only Risk Calculator + Risk Map cards */}
+            <div className="mx-auto grid max-w-5xl grid-cols-1 gap-6 py-12 md:grid-cols-2">
+              {/* Risk Calculator Card */}
               <Card>
                 <CardHeader className="pb-2">
                   <Activity className="h-6 w-6 text-primary mb-2" />
                   <CardTitle>Risk Calculator</CardTitle>
-                  <CardDescription>AI-powered risk assessment based on your symptoms and exposure</CardDescription>
+                  <CardDescription>AI-powered risk assessment</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <p className="text-sm text-muted-foreground">
-                    Input your symptoms, travel history, and exposure details to get a personalized risk assessment.
+                    Input your symptoms, travel history, and exposure details for a personalized risk evaluation.
                   </p>
                 </CardContent>
                 <CardFooter>
@@ -93,25 +101,8 @@ export default function Home() {
                   </Link>
                 </CardFooter>
               </Card>
-              <Card>
-                <CardHeader className="pb-2">
-                  <Pill className="h-6 w-6 text-primary mb-2" />
-                  <CardTitle>Medical Services</CardTitle>
-                  <CardDescription>Find nearby pharmacies and medical supplies</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-sm text-muted-foreground">
-                    Locate pharmacies with real-time inventory for masks, medicines, and test kits.
-                  </p>
-                </CardContent>
-                <CardFooter>
-                  <Link href="/medical-services" className="w-full">
-                    <Button size="sm" className="w-full">
-                      Find Services
-                    </Button>
-                  </Link>
-                </CardFooter>
-              </Card>
+
+              {/* Risk Map Card */}
               <Card>
                 <CardHeader className="pb-2">
                   <MapPin className="h-6 w-6 text-primary mb-2" />
@@ -131,29 +122,12 @@ export default function Home() {
                   </Link>
                 </CardFooter>
               </Card>
-              <Card>
-                <CardHeader className="pb-2">
-                  <Navigation className="h-6 w-6 text-primary mb-2" />
-                  <CardTitle>Safe Navigation</CardTitle>
-                  <CardDescription>Plan routes that avoid high-risk areas</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-sm text-muted-foreground">
-                    Get turn-by-turn directions for the safest route to your destination.
-                  </p>
-                </CardContent>
-                <CardFooter>
-                  <Link href="/navigation" className="w-full">
-                    <Button size="sm" className="w-full">
-                      Navigate
-                    </Button>
-                  </Link>
-                </CardFooter>
-              </Card>
             </div>
           </div>
         </section>
       </main>
+
+      {/* FOOTER */}
       <footer className="border-t py-6 md:py-0">
         <div className="container flex flex-col items-center justify-between gap-4 md:h-24 md:flex-row">
           <div className="flex items-center gap-2">
@@ -176,4 +150,3 @@ export default function Home() {
     </div>
   )
 }
-
