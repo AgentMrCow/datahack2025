@@ -409,7 +409,7 @@ export default function Dashboard() {
             </CardHeader>
             <CardContent>
               <p className="text-red-700 dark:text-red-400">
-                Mask shortages reported in North and East regions. Immediate redistribution required.
+                Mask shortages reported in North District. Immediate redistribution required.
               </p>
             </CardContent>
             <CardFooter>
@@ -446,7 +446,7 @@ export default function Dashboard() {
           <Card className="col-span-full lg:col-span-1">
             <CardHeader>
               <CardTitle>Resource Distribution</CardTitle>
-              <CardDescription>By region</CardDescription>
+              <CardDescription>By District</CardDescription>
             </CardHeader>
             <CardContent>
               <div className="h-[300px]">
@@ -512,15 +512,15 @@ export default function Dashboard() {
             <CardFooter className="flex justify-between">
               <Select defaultValue="all">
                 <SelectTrigger className="w-[180px]">
-                  <SelectValue placeholder="Select region" />
+                  <SelectValue placeholder="Select district" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="all">All Regions</SelectItem>
-                  <SelectItem value="north">North Region</SelectItem>
-                  <SelectItem value="south">South Region</SelectItem>
-                  <SelectItem value="east">East Region</SelectItem>
-                  <SelectItem value="west">West Region</SelectItem>
-                  <SelectItem value="central">Central Region</SelectItem>
+                  <SelectItem value="all">All Districts</SelectItem>
+                  <SelectItem value="north">North District</SelectItem>
+                  <SelectItem value="south">Tsuen Wans District</SelectItem>
+                  <SelectItem value="east">Yuen Long District</SelectItem>
+                  <SelectItem value="west">Tuen mun District</SelectItem>
+                  <SelectItem value="central">Central District</SelectItem>
                 </SelectContent>
               </Select>
               <Button variant="outline">
@@ -542,7 +542,7 @@ export default function Dashboard() {
                   <thead>
                     <tr className="border-b">
                       <th className="text-left p-2">Pharmacy</th>
-                      <th className="text-left p-2">Region</th>
+                      <th className="text-left p-2">District</th>
                       <th className="text-left p-2">Masks</th>
                       <th className="text-left p-2">Vaccines</th>
                       <th className="text-left p-2">Test Kits</th>
@@ -566,7 +566,7 @@ export default function Dashboard() {
                     </tr>
                     <tr className="border-b">
                       <td className="p-2">MediPlus</td>
-                      <td className="p-2">East</td>
+                      <td className="p-2">Yuen Long</td>
                       <td className="p-2">500</td>
                       <td className="p-2">1,200</td>
                       <td className="p-2">800</td>
@@ -590,7 +590,7 @@ export default function Dashboard() {
                     </tr>
                     <tr className="border-b">
                       <td className="p-2">WellCare</td>
-                      <td className="p-2">West</td>
+                      <td className="p-2">Tsuen Wan</td>
                       <td className="p-2">3,200</td>
                       <td className="p-2">2,100</td>
                       <td className="p-2">2,800</td>
