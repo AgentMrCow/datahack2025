@@ -351,9 +351,6 @@ export default function PlanRoutePage() {
       <Card>
         <CardHeader>
           <CardTitle>Plan Your Route</CardTitle>
-          <CardDescription>
-            Now you can set all user attributes to match your Python tests.
-          </CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
           {/* ORIGIN */}
